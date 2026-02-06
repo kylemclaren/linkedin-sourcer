@@ -1,6 +1,6 @@
 ---
 name: linkedin-sourcer
-description: Source and evaluate candidates from LinkedIn using the linkedin_scraper Python library. Use when the user wants to (1) scrape LinkedIn profiles for candidate data, (2) evaluate candidates against a job description, (3) generate boolean search strings for sourcing, (4) produce candidate scorecards, summaries, or comparison tables, (5) scrape company pages for research, or (6) any recruiting/talent-sourcing task involving LinkedIn data.
+description: Source and evaluate candidates from LinkedIn using the linkedin_scraper Python library. Use when the user wants to (1) scrape LinkedIn profiles for candidate data, (2) evaluate candidates against a job description, (3) generate boolean search strings for sourcing, (4) produce candidate scorecards, summaries, or comparison tables, or (5) any recruiting/talent-sourcing task involving LinkedIn data.
 ---
 
 # LinkedIn Sourcer
@@ -32,7 +32,6 @@ Determine the task type:
 2. **"Find candidates for this role"** → Candidate Search
 3. **"Evaluate this candidate for this role"** → Candidate Evaluation
 4. **"Compare these candidates"** → Candidate Comparison
-5. **"Research this company"** → Company Scraping
 
 ## 1. Profile Scraping
 
@@ -77,14 +76,6 @@ When evaluating multiple candidates for the same role:
 1. Scrape all candidate profiles
 2. Apply the comparison table from `references/sourcing_workflows.md` → Candidate Comparison Table
 3. Rank candidates with rationale
-
-## 5. Company Scraping
-
-Research a company (useful for understanding a candidate's employer or target companies):
-
-```bash
-python3 scripts/scrape_company.py "https://linkedin.com/company/name/" --session session.json
-```
 
 ## Error Handling
 

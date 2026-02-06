@@ -53,28 +53,6 @@ person = await scraper.scrape("https://linkedin.com/in/username")
 
 Returns `Person` model.
 
-### CompanyScraper
-
-```python
-from linkedin_scraper import CompanyScraper
-
-scraper = CompanyScraper(browser.page)
-company = await scraper.scrape("https://linkedin.com/company/name/")
-```
-
-Returns `Company` model.
-
-### CompanyPostsScraper
-
-```python
-from linkedin_scraper import CompanyPostsScraper
-
-scraper = CompanyPostsScraper(browser.page)
-posts = await scraper.scrape("https://linkedin.com/company/name/", limit=10)
-```
-
-Returns `list[Post]`.
-
 ## Data Models (Pydantic)
 
 ### Person
@@ -106,30 +84,6 @@ Returns `list[Post]`.
 | degree | Optional[str] |
 | field_of_study | Optional[str] |
 | dates | Optional[str] |
-
-### Company
-| Field | Type |
-|-------|------|
-| name | str |
-| industry | Optional[str] |
-| company_size | Optional[str] |
-| headquarters | Optional[str] |
-| founded | Optional[str] |
-| specialties | list[str] |
-| about | Optional[str] |
-| linkedin_url | str |
-
-### Post
-| Field | Type |
-|-------|------|
-| linkedin_url | Optional[str] |
-| urn | Optional[str] |
-| text | Optional[str] |
-| posted_date | Optional[str] |
-| reactions_count | Optional[int] |
-| comments_count | Optional[int] |
-| reposts_count | Optional[int] |
-| image_urls | list[str] |
 
 ## Error Handling
 

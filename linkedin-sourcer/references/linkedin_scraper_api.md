@@ -9,7 +9,24 @@ playwright install chromium
 
 ## Authentication & Session Management
 
-All scraping requires an authenticated session. Create one first:
+All scraping requires an authenticated session. Use `scripts/create_session.py` or create one inline.
+
+**Programmatic login** (credentials via args or env vars `LINKEDIN_EMAIL` / `LINKEDIN_PASSWORD`):
+
+```python
+from linkedin_scraper import BrowserManager, login_with_credentials
+import os
+
+async with BrowserManager(headless=False) as browser:
+    await login_with_credentials(
+        browser.page,
+        username=os.getenv("LINKEDIN_EMAIL"),
+        password=os.getenv("LINKEDIN_PASSWORD")
+    )
+    await browser.save_session("session.json")
+```
+
+**Manual login** (opens browser for manual entry — use when CAPTCHA or 2FA is required):
 
 ```python
 from linkedin_scraper import BrowserManager, wait_for_manual_login
@@ -20,9 +37,8 @@ async with BrowserManager(headless=False) as browser:
     await browser.save_session("session.json")
 ```
 
-Or use `scripts/create_session.py` directly.
+**Reuse sessions** in subsequent runs:
 
-Reuse sessions in subsequent runs:
 ```python
 async with BrowserManager(headless=True) as browser:
     await browser.load_session("session.json")

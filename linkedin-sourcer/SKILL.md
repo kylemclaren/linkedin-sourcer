@@ -16,13 +16,29 @@ pip install linkedin-scraper
 playwright install chromium
 ```
 
-An authenticated session file (`session.json`) is required. If one does not exist, run:
+An authenticated session file (`session.json`) is required. If one does not exist, create one:
+
+**Programmatic login** (using credentials):
+
+```bash
+python3 scripts/create_session.py --email USER@EXAMPLE.COM --password PASS
+```
+
+Or via environment variables:
+
+```bash
+export LINKEDIN_EMAIL=user@example.com
+export LINKEDIN_PASSWORD=mypassword
+python3 scripts/create_session.py
+```
+
+**Manual login** (opens a browser window — use when programmatic login fails due to CAPTCHA/2FA):
 
 ```bash
 python3 scripts/create_session.py
 ```
 
-This opens a browser for manual LinkedIn login and saves the session for reuse. See `references/linkedin_scraper_api.md` for programmatic login and browser configuration options.
+The session file is reusable until LinkedIn expires it. See `references/linkedin_scraper_api.md` for browser configuration options.
 
 ## Workflow Decision Tree
 
@@ -79,7 +95,7 @@ When evaluating multiple candidates for the same role:
 
 ## Error Handling
 
-- **AuthenticationError** → Session expired. Re-run `scripts/create_session.py`
+- **AuthenticationError** → Session expired. Re-run `scripts/create_session.py` with credentials or manual login
 - **RateLimitError** → Wait and retry. Increase `--delay` between requests
 - **ProfileNotFoundError** → Profile is private or URL is invalid
 

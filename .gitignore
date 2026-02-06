@@ -1,0 +1,31 @@
+# Packaged skills
+*.skill
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Session files (contain auth tokens)
+session.json
+
+# Environment
+.env
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Skills CLI install artifacts
+.agents/
+.claude/
+.cursor/
